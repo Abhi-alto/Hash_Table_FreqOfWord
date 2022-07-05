@@ -130,7 +130,7 @@ namespace Hash_Tables
                     return 0;
             }
         }
-        public int size()
+        public int size()                   //for getting size of the linked list
         {
             Node<gtype> temp = head;
             int size = 0;
@@ -141,14 +141,14 @@ namespace Hash_Tables
             }
             return size;
         }
-        public int frequency(gtype data)
+        public int frequency(gtype data)                    //to get frequency of a string
         {
             Node<gtype> node = new Node<gtype>(data);
             Node<gtype> temp = head;
             int counter = 0;
             while(temp!=null)
             {
-                if((temp.data.CompareTo(data)) != 0)
+                if((temp.data.CompareTo(data)) != null)                 //compares each node data with the data to be found
                 {
                     counter++;
                 }

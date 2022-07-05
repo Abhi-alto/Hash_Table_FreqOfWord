@@ -8,10 +8,10 @@ namespace Hash_Tables
 {
     public class WordsFreq<gtype> where gtype : IComparable
     {
-        linked_list<gtype>[] key_row = new linked_list <gtype>[11];    //array of linked list type data type
+        linked_list<gtype>[] key_row = new linked_list <gtype>[11];    //array of linked list type data type with size 11
         public WordsFreq()
         {
-            for(int x=0;x<11;x++)
+            for(int x=0;x<11;x++)                               //taking the predefined size of array as 11
             {
                 linked_list<gtype> list = new linked_list<gtype>();
                 key_row[x] = list;
@@ -31,8 +31,8 @@ namespace Hash_Tables
             {
                 linked_list<gtype> temp;
                 temp = key_row[key%11];
-                temp.print();
-                return key % 11;
+                //temp.print();
+                return (key% 11);
             }
             else
             {
@@ -59,8 +59,10 @@ namespace Hash_Tables
             Console.WriteLine(size+" is the size of the hash table");
             return size;
         }
-        public void frequencyOfword(long hashcode,gtype wordFreq)
+        public void frequencyOfword(long hashcode,gtype wordFreq)                  
         {
+            ///for getting the frequency, we first go that particular 
+            ///linked list using the hash code and then call the frequency function for that linked list
             linked_list<gtype> temp;
             temp=key_row[hashcode%11];
             Console.WriteLine("frequency of " + wordFreq + " is " + temp.frequency(wordFreq));
