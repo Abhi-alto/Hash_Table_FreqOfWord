@@ -20,12 +20,12 @@ namespace Hash_Tables
         public void Insert(gtype data)          //inserting a data into  hash table
         {
             long hashcode = data.GetHashCode();
-            long index = hashcode % 11;
+            long index = Math.Abs(hashcode % 11);
             linked_list<gtype> temporary;
             temporary = key_row[index];
             temporary.add(data);
         }
-        public int get(int key)        //using the entered key we find if the key is present in the hash table & and then print it
+        public long get(long key)        //using the entered key we find if the key is present in the hash table & and then print it
         {
             if ((key % 11) <= 10)
             {
@@ -58,6 +58,12 @@ namespace Hash_Tables
             }
             Console.WriteLine(size+" is the size of the hash table");
             return size;
+        }
+        public void frequencyOfword(long hashcode,gtype wordFreq)
+        {
+            linked_list<gtype> temp;
+            temp=key_row[hashcode%11];
+            Console.WriteLine("frequency of " + wordFreq + " is " + temp.frequency(wordFreq));
         }
         public bool isEmpty()                       //checking if the hash table is empty or not
         {
