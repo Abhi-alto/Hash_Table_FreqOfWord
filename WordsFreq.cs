@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,10 @@ namespace Hash_Tables
 {
     public class WordsFreq<gtype> where gtype : IComparable
     {
-        linked_list<gtype>[] key_row = new linked_list <gtype>[11];    //array of linked list type data type
+        linked_list<gtype>[] key_row = new linked_list<gtype>[11];    //array of linked list type data type with size 11
         public WordsFreq()
         {
-            for(int x=0;x<11;x++)
+            for (int x = 0; x < 11; x++)                               //taking the predefined size of array as 11
             {
                 linked_list<gtype> list = new linked_list<gtype>();
                 key_row[x] = list;
@@ -20,19 +21,19 @@ namespace Hash_Tables
         public void Insert(gtype data)          //inserting a data into  hash table
         {
             long hashcode = data.GetHashCode();
-            long index = hashcode % 11;
+            long index = Math.Abs(hashcode % 11);
             linked_list<gtype> temporary;
             temporary = key_row[index];
             temporary.add(data);
         }
-        public int get(int key)        //using the entered key we find if the key is present in the hash table & and then print it
+        public long get(long key)        //using the entered key we find if the key is present in the hash table & and then print it
         {
             if ((key % 11) <= 10)
             {
                 linked_list<gtype> temp;
-                temp = key_row[key%11];
-                temp.print();
-                return key % 11;
+                temp = key_row[key % 11];
+                //temp.print();
+                return (key % 11);
             }
             else
             {
@@ -41,11 +42,11 @@ namespace Hash_Tables
             }
 
         }
-        public void remove(gtype data,int position)             //removing a data from the hash table
+        public void remove(gtype data, int position)             //removing a data from the hash table
         {
             linked_list<gtype> temp;
             temp = key_row[position];
-            temp.delete(data,position);
+            temp.delete(data, position);
         }
         public int getsize()                                //getting the size of the hash table
         {
@@ -54,10 +55,18 @@ namespace Hash_Tables
             {
                 linked_list<gtype> temp;
                 temp = key_row[x];
-                size=size+temp.size();
+                size = size + temp.size();
             }
-            Console.WriteLine(size+" is the size of the hash table");
+            Console.WriteLine(size + " is the size of the hash table");
             return size;
+        }
+        public void frequencyOfword(long hashcode, gtype wordFreq)
+        {
+            ///for getting the frequency, we first go that particular 
+            ///linked list using the hash code and then call the frequency function for that linked list
+            linked_list<gtype> temp;
+            temp = key_row[hashcode % 11];
+            Console.WriteLine("frequency of " + wordFreq + " is " + temp.frequency(wordFreq));
         }
         public bool isEmpty()                       //checking if the hash table is empty or not
         {
