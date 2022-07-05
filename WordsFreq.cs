@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Hash_Tables
 {
     public class WordsFreq<gtype> where gtype : IComparable
@@ -41,11 +40,11 @@ namespace Hash_Tables
             }
 
         }
-        public void remove(gtype data,int position)             //removing a data from the hash table
+        public void remove(gtype data, int position)             //removing a data from the hash table
         {
             linked_list<gtype> temp;
             temp = key_row[position];
-            temp.delete(data,position);
+            temp.delete(data, position);
         }
         public int getsize()                                //getting the size of the hash table
         {
@@ -54,9 +53,9 @@ namespace Hash_Tables
             {
                 linked_list<gtype> temp;
                 temp = key_row[x];
-                size=size+temp.size();
+                size = size + temp.size();
             }
-            Console.WriteLine(size+" is the size of the hash table");
+            Console.WriteLine(size + " is the size of the hash table");
             return size;
         }
         public void frequencyOfword(long hashcode,gtype wordFreq)                  
