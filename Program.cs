@@ -9,13 +9,13 @@ for (int i = 0; i < l; i++) //inserting different words in hash table
     Console.WriteLine(sentence[i]);
     word.Insert(sentence[i]);
 }
-Console.WriteLine("Enter a word whose frequency you want");
-string wordFreq=Console.ReadLine();
+Console.WriteLine("Enter a word which you want to remove");
+string wordRemove=Console.ReadLine();
 
-long hashcode = wordFreq.GetHashCode();
+long hashcode = wordRemove.GetHashCode();
 if(word.get(Math.Abs(hashcode)) !=0)         //checks if the word is present by checking if its index value comes under the array index by using get function
 {
-    word.frequencyOfword(Math.Abs(hashcode), wordFreq);                 //Math.Abs used as some times we get negative hash codes
+    word.remove((wordRemove),Math.Abs(hashcode));                 //Math.Abs used as some times we get negative hash codes
 }
 else
 {

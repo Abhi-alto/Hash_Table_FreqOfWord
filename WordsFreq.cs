@@ -40,11 +40,16 @@ namespace Hash_Tables
             }
 
         }
-        public void remove(gtype data, int position)             //removing a data from the hash table
+        public void remove(gtype data, long hashcode)             //removing a data from the hash table
         {
             linked_list<gtype> temp;
-            temp = key_row[position];
-            temp.delete(data, position);
+            temp = key_row[hashcode%11];
+            Console.WriteLine("Linked List has ");
+            temp.print();
+            int index=temp.search(data);
+            temp.delete(data,index);
+            Console.WriteLine("After deleting , linked list has ");
+            temp.print();
         }
         public int getsize()                                //getting the size of the hash table
         {

@@ -61,6 +61,10 @@ namespace Hash_Tables
             {
                 Console.WriteLine("LinkedList is empty");
             }
+            else if(position==1)
+            {
+                head = head.next;
+            }
             else
             {
                 while (posi != (position - 1))
@@ -108,7 +112,7 @@ namespace Hash_Tables
             bool present = true;
             if (head == null)                  //if there is no node
             {
-                return default;
+                return 0;
             }
             else
             {
@@ -158,12 +162,19 @@ namespace Hash_Tables
         public void print()                //printing the nodes
         {
             Node<gtype> temp = this.head;
-            while (temp != null)
+            if (temp != null)
             {
-                Console.Write(temp.data + " ");
-                temp = temp.next;
+                while (temp != null)
+                {
+                    Console.Write(temp.data + " ");
+                    temp = temp.next;
+                }
+                Console.WriteLine("");
             }
-            Console.WriteLine("");
+            else
+            {
+                Console.WriteLine("Linked list empty now");
+            }
         }
     }
 }
